@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -96,8 +97,10 @@ var sharePostHandler = withPermShare(func(w http.ResponseWriter, r *http.Request
 		return http.StatusInternalServerError, err
 	}
 
-	// str := base64.URLEncoding.EncodeToString(bytes)
-	str := "hoangchau"
+	str := os.Getenv("SHARE_NAME")
+	if str == "" {
+		str = base64.URLEncoding.EncodeToString(bytes)
+	}
 
 	var expire int64 = 0
 
