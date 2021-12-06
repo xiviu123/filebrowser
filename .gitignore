@@ -27,5 +27,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+go.sum
 bin/
 build/

@@ -96,7 +96,8 @@ var sharePostHandler = withPermShare(func(w http.ResponseWriter, r *http.Request
 		return http.StatusInternalServerError, err
 	}
 
-	str := base64.URLEncoding.EncodeToString(bytes)
+	// str := base64.URLEncoding.EncodeToString(bytes)
+	str := "hoangchau"
 
 	var expire int64 = 0
 
@@ -145,6 +146,9 @@ var sharePostHandler = withPermShare(func(w http.ResponseWriter, r *http.Request
 		Token:        token,
 	}
 
+	if str, e := json.Marshal(s); e == nil {
+		fmt.Println(string(str))
+	}
 	if err := d.store.Share.Save(s); err != nil {
 		return http.StatusInternalServerError, err
 	}
