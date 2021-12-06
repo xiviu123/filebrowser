@@ -146,9 +146,6 @@ var sharePostHandler = withPermShare(func(w http.ResponseWriter, r *http.Request
 		Token:        token,
 	}
 
-	if str, e := json.Marshal(s); e == nil {
-		fmt.Println(string(str))
-	}
 	if err := d.store.Share.Save(s); err != nil {
 		return http.StatusInternalServerError, err
 	}
